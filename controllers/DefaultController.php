@@ -54,6 +54,11 @@ class DefaultController extends \yii\base\Controller
             $rule = [];
             $rule['url'] = str_replace(['<', '>'], ['{', '}'], rtrim($templateObject->getValue($generatedRule), '/'));
             $rule['method'] = current($generatedRule->verb);
+
+            if ($rule['method'] === 'OPTIONS') {
+                continue;
+            }
+
             preg_match_all('/\{[^}]*\}/', $rule['url'], $matched);
 
             $params = [];
