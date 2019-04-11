@@ -51,9 +51,9 @@ $methodColorMap = [
                                             <span class="label bg-<?= $methodColorMap[$rule['method']] ?> pull-left col-lg-1 method"><?= $rule['method'] ?></span>
                                             <span class="col-lg-11 text-nowrap ellipsis">
                                                 <strong class="url"><?= htmlspecialchars($rule['url']) ?></strong>
-                                                <?php if (!empty($rule['description'])) : ?>
+                                                <?php if (!empty($rule['title'])) : ?>
                                                     - 
-                                                    <i><?= htmlspecialchars(strip_tags($rule['description'])) ?></i>
+                                                    <i><?= htmlspecialchars(strip_tags($rule['title'])) ?></i>
                                                 <?php endif; ?>
                                             </span>
 
@@ -65,7 +65,7 @@ $methodColorMap = [
                                 <div id="rule-<?= $ei ?>-<?= $ri ?>" class="panel panel-primary collapse" role="tabpanel">
                                     <div class="panel-body">
                                         <?php if (!empty($rule['description'])) : ?>
-                                            <p><?= $rule['description'] ?></p>
+                                            <p><?= $rule['description'] ?>.</p>
                                         <?php endif ?>
                                         <form class="form">
                                             <input type="hidden" name="method" value="<?= $rule['method'] ?>" />

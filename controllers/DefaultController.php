@@ -1,6 +1,6 @@
 <?php
 
-namespace nostop8\yii2\rest_api_doc\controllers;
+namespace chemezov\yii2\rest_api_doc\controllers;
 
 use yii\helpers\BaseInflector;
 use yii\helpers\Inflector;
@@ -11,7 +11,7 @@ class DefaultController extends \yii\base\Controller
     public function init()
     {
         $view = $this->getView();
-        \nostop8\yii2\rest_api_doc\ModuleAsset::register($view);
+        \chemezov\yii2\rest_api_doc\ModuleAsset::register($view);
         parent::init();
     }
 
@@ -85,6 +85,7 @@ class DefaultController extends \yii\base\Controller
                 }
                 $rule['filters'] = $this->_findElements($methodInfo->getDocComment(), 'Rest Filters');
                 $rule['expand'] = $this->_findElements($methodInfo->getDocComment(), 'Rest Expand');
+                $rule['title'] = $this->_findString($methodInfo->getDocComment(), 'Rest Title');
                 $rule['description'] = $this->_findString($methodInfo->getDocComment(), 'Rest Description');
             } catch (\Exception $ex) {
                 // Silence, because we do not require description of REST

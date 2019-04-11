@@ -1,5 +1,5 @@
 {
-    "name": "nostop8/rest-api-doc",
+    "name": "chemezov/rest-api-doc",
     "type": "yii2-extension",
     "description": "Simple documentation generator for Yii2 REST applications based on defined API endpoints and actions annotations.",
     "keywords": ["yii2", "rest", "api", "generator", "documentation"],
@@ -8,6 +8,10 @@
         {
             "name": "Volodymyr Dovbenko",
             "email": "nostop8@gmail.com"
+        },
+        {
+            "name": "Mikhail Chemezov",
+            "email": "michlenanosoft@gmail.com"
         }
     ],
     "require": {
@@ -16,7 +20,7 @@
     },
     "autoload": {
         "psr-4": {
-            "nostop8\\yii2\\rest_api_doc\\": ""
+            "chemezov\\yii2\\rest_api_doc\\": ""
         }
     }
 }
