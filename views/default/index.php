@@ -52,7 +52,7 @@ $methodColorMap = [
                                             <span class="col-lg-11 text-nowrap ellipsis">
                                                 <strong class="url"><?= htmlspecialchars($rule['url']) ?></strong>
                                                 <?php if (!empty($rule['title'])) : ?>
-                                                    - 
+                                                    -
                                                     <i><?= htmlspecialchars(strip_tags($rule['title'])) ?></i>
                                                 <?php endif; ?>
                                             </span>
@@ -136,7 +136,7 @@ $methodColorMap = [
                                                 </div>
                                             <?php endif; ?>
                                             <div class="form-group buttons">
-                                                <?php if (!in_array($rule['method'], ['GET', 'DELETE'])) : ?>
+                                                <?php if (!in_array($rule['method'], ['GET', 'DELETE']) && !empty($rule['fields'])) : ?>
                                                     <button class="btn btn-default prettify">Prettify Body</button>
                                                 <?php endif; ?>
                                                 <button class="btn btn-primary send <?php if ($rule['method'] == 'DELETE') print 'btn-danger' ?>">Send</button>
