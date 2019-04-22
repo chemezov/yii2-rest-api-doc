@@ -105,7 +105,7 @@ $methodColorMap = [
                                                     <?php endforeach; ?>
                                                 </fieldset>
                                             <?php endif; ?>
-                                            <?php if (!in_array($rule['method'], ['GET', 'DELETE']) && empty($rule['fileFields'])) : ?>
+                                            <?php if (!in_array($rule['method'], ['GET', 'DELETE']) && empty($rule['fileFields']) && !empty($rule['fields'])) : ?>
                                                 <div class="form-group">
                                                     <div class="row">
                                                         <div class="col-lg-7">
