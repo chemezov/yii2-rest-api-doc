@@ -2,9 +2,9 @@
 Simple documentation generator for Yii2 REST applications based on defined API endpoints and actions annotations.
 
 ## Installation
- - Run `composer require chemezov/rest-api-doc`;
+ - Run `composer require chemezov/yii2-rest-api-doc`;
 
-Alternatively add into `require` section of your `composer.json` following string `"chemezov/rest-api-doc": "1.0"` and run `composer update`
+Alternatively add into `require` section of your `composer.json` following string `"chemezov/yii2-rest-api-doc": "1.0"` and run `composer update`
  - In your application config file inside `modules` section add
 ```
 'modules' => [

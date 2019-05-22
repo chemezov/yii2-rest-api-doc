@@ -8,7 +8,7 @@ class ModuleAsset extends \yii\web\AssetBundle
     /**
      * @inheritdoc
      */
-    public $sourcePath = '@vendor/chemezov/rest-api-doc/assets';
+    public $sourcePath = '@vendor/chemezov/yii2-rest-api-doc/assets';
 
     /**
      * @inheritdoc

@@ -1,5 +1,5 @@
 {
-    "name": "chemezov/rest-api-doc",
+    "name": "chemezov/yii2-rest-api-doc",
     "type": "yii2-extension",
     "description": "Simple documentation generator for Yii2 REST applications based on defined API endpoints and actions annotations.",
     "keywords": ["yii2", "rest", "api", "generator", "documentation"],
