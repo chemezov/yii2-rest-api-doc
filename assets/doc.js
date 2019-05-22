@@ -64,7 +64,9 @@
 
             var urlParams = [];
             $('.filters input', form).each(function () {
-                urlParams.push($(this).attr('data-key') + '=' + $(this).val());
+                if ($(this).val()) {
+                    urlParams.push($(this).attr('data-key') + '=' + $(this).val());
+                }
             });
 
             var expand = [];
