@@ -35,17 +35,22 @@ $methodColorMap = [
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#<?= $entity['title'] ?>">
-                            <?= $entity['title'] ?>
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#<?= $entity['name'] ?>">
+                            <?= $entity['name'] ?>
+                            <?php if (isset($entity['title'])): ?>
+                                <span class="text-muted pull-right"><?= $entity['title']; ?></span>
+                            <?php endif; ?>
                         </a>
                     </h4>
                 </div>
-                <div id="<?= $entity['title'] ?>" class="panel-collapse collapse" role="tabpanel">
+                <div id="<?= $entity['name'] ?>" class="panel-collapse collapse" role="tabpanel">
+                    <?php if (isset($entity['description'])): ?>
+                        <div class="panel-body"><?= $entity['description']; ?>.</div>
+                    <?php endif; ?>
                     <div class="panel-body">
-
-                        <div class="list-group" id="<?= $entity['title'] ?>-list" role="tablist" aria-multiselectable="true">
+                        <div class="list-group" id="<?= $entity['name'] ?>-list" role="tablist" aria-multiselectable="true">
                             <?php foreach ($entity['rules'] as $ri => $rule) : ?>
-                                <a class="endpoint-toggle list-group-item" role="button" data-parent="#<?= $entity['title'] ?>-list" data-toggle="collapse" href="#rule-<?= $ei ?>-<?= $ri ?>" aria-expanded="false" aria-controls="rule-<?= $ei ?>-<?= $ri ?>">
+                                <a class="endpoint-toggle list-group-item" role="button" data-parent="#<?= $entity['name'] ?>-list" data-toggle="collapse" href="#rule-<?= $ei ?>-<?= $ri ?>" aria-expanded="false" aria-controls="rule-<?= $ei ?>-<?= $ri ?>">
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <span class="label bg-<?= $methodColorMap[$rule['method']] ?> pull-left col-lg-1 method"><?= $rule['method'] ?></span>

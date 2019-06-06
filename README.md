@@ -46,6 +46,10 @@ Please, note. You may change `documentation` into any other word, which would be
 
 namespace app\controllers;
 
+/**
+ * Rest Title: Example Controller title.
+ * Rest Description: Your controller description.
+ */
 class ExampleController extends \yii\rest\ActiveController
 {
 

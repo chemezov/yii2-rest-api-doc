@@ -23,8 +23,19 @@ class DefaultController extends \yii\base\Controller
                 $entity = [];
                 $urlName = key($urlRule->controller);
                 $controllerName = current($urlRule->controller);
+
+                try {
+                    list($controller, $actionID) = \Yii::$app->createController($controllerName);
+                    $controllerReflection = new \ReflectionClass($controller);
+
+                    $entity['title'] = $this->_findString($controllerReflection->getDocComment(), 'Rest Title');
+                    $entity['description'] = $this->_findString($controllerReflection->getDocComment(), 'Rest Description');
+                } catch (\Exception $e) {
+
+                }
+
                 $controllerName = strrchr($controllerName, '/') === false ? $controllerName : substr(strrchr($controllerName, '/'), 1);
-                $entity['title'] = ucfirst($controllerName);
+                $entity['name'] = ucfirst($controllerName);
                 $urlRuleReflection = new \ReflectionClass($urlRule);
                 $rulesObject = $urlRuleReflection->getProperty('rules');
                 $rulesObject->setAccessible(true);
@@ -36,7 +47,7 @@ class DefaultController extends \yii\base\Controller
             }
         }
         return $this->render('index', [
-                'rules' => $rules,
+            'rules' => $rules,
         ]);
     }
 
@@ -106,7 +117,7 @@ class DefaultController extends \yii\base\Controller
             $rules[] = $rule;
         }
 
-        usort($rules, function($a, $b) {
+        usort($rules, function ($a, $b) {
             return strcmp($a['url'], $b['url']);
         });
 
