@@ -63,7 +63,12 @@ $methodColorMap = [
                                                 <th><?= $attribute ?></th>
                                                 <td class="text-center"><?= $model->isAttributeRequired($attribute) ? '✔' : '✘' ?></td>
                                                 <td><?= $model->getTableSchema()->getColumn($attribute)->type ?></td>
-                                                <td><?= $model->getAttributeLabel($attribute) ?></td>
+                                                <td>
+                                                    <?= $model->getAttributeLabel($attribute) ?>
+                                                    <?php if (method_exists($model, 'attributeDescriptions') && !empty($model->attributeDescriptions()[$attribute])): ?>
+                                                        <br><span class="text-muted"><?= $model->attributeDescriptions()[$attribute] ?></span>
+                                                    <?php endif; ?>
+                                                </td>
                                             </tr>
                                         <?php endif; ?>
                                     <?php endforeach; ?>
