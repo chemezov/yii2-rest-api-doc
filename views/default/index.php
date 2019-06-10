@@ -44,8 +44,35 @@ $methodColorMap = [
                     </h4>
                 </div>
                 <div id="<?= $entity['name'] ?>" class="panel-collapse collapse" role="tabpanel">
-                    <?php if (isset($entity['description'])): ?>
-                        <div class="panel-body"><?= $entity['description']; ?>.</div>
+                    <?php if (isset($entity['description']) || isset($entity['model'])): ?>
+                        <div class="panel-body">
+                            <?php if (isset($entity['model'])): ?>
+                                <?php /* @var $model \yii\db\ActiveRecord */ ?>
+                                <?php $model = new $entity['model']; ?>
+
+                                <table class="table table-bordered table-striped table-bordered">
+                                    <tr>
+                                        <th class="col-md-3">Name</th>
+                                        <th class="col-md-1">Required</th>
+                                        <th class="col-md-2">Type</th>
+                                        <th>Description</th>
+                                    </tr>
+                                    <?php foreach ($model->getAttributes() as $attribute => $value): ?>
+                                        <?php if ($model->isAttributeSafe($attribute)): ?>
+                                            <tr>
+                                                <th><?= $attribute ?></th>
+                                                <td class="text-center"><?= $model->isAttributeRequired($attribute) ? '✔' : '✘' ?></td>
+                                                <td><?= $model->getTableSchema()->getColumn($attribute)->type ?></td>
+                                                <td><?= $model->getAttributeLabel($attribute) ?></td>
+                                            </tr>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+                                </table>
+                            <?php endif; ?>
+                            <?php if (isset($entity['description'])): ?>
+                                <?= $entity['description']; ?>.
+                            <?php endif; ?>
+                        </div>
                     <?php endif; ?>
                     <div class="panel-body">
                         <div class="list-group" id="<?= $entity['name'] ?>-list" role="tablist" aria-multiselectable="true">

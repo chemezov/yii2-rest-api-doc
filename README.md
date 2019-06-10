@@ -49,6 +49,7 @@ namespace app\controllers;
 /**
  * Rest Title: Example Controller title.
  * Rest Description: Your controller description.
+ * Rest Model: app\models\Document.
  */
 class ExampleController extends \yii\rest\ActiveController
 {

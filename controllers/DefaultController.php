@@ -30,6 +30,7 @@ class DefaultController extends \yii\base\Controller
 
                     $entity['title'] = $this->_findString($controllerReflection->getDocComment(), 'Rest Title');
                     $entity['description'] = $this->_findString($controllerReflection->getDocComment(), 'Rest Description');
+                    $entity['model'] = $this->_findString($controllerReflection->getDocComment(), 'Rest Model');
                 } catch (\Exception $e) {
 
                 }
