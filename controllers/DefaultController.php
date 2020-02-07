@@ -36,7 +36,8 @@ class DefaultController extends \yii\base\Controller
                 }
 
                 $controllerName = strrchr($controllerName, '/') === false ? $controllerName : substr(strrchr($controllerName, '/'), 1);
-                $entity['name'] = str_replace(['/'], '_', ucfirst($controllerName));
+                $entity['id'] = str_replace('-', '_', $controllerName);
+                $entity['name'] = str_replace(['/'], '_', Inflector::camel2words(ucfirst($controllerName)));
                 $urlRuleReflection = new \ReflectionClass($urlRule);
                 $rulesObject = $urlRuleReflection->getProperty('rules');
                 $rulesObject->setAccessible(true);
