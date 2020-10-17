@@ -4,11 +4,10 @@ namespace chemezov\yii2\rest_api_doc;
 
 class ModuleAsset extends \yii\web\AssetBundle
 {
-
     /**
      * @inheritdoc
      */
-    public $sourcePath = '@vendor/chemezov/yii2-rest-api-doc/assets';
+    public $sourcePath = __DIR__ . '/assets';
 
     /**
      * @inheritdoc
@@ -16,6 +15,7 @@ class ModuleAsset extends \yii\web\AssetBundle
     public $css = [
         'jsonview/jquery.jsonview.min.css',
         'doc.css',
+        'site.css',
     ];
 
     /**

@@ -2,11 +2,13 @@
 
 namespace chemezov\yii2\rest_api_doc\controllers;
 
+use Yii;
 use yii\helpers\BaseInflector;
 use yii\helpers\Inflector;
 
 class DefaultController extends \yii\base\Controller
 {
+    public $layout = 'main';
 
     public function init()
     {
@@ -18,14 +20,14 @@ class DefaultController extends \yii\base\Controller
     public function actionIndex()
     {
         $rules = [];
-        foreach (\Yii::$app->urlManager->rules as $urlRule) {
+        foreach (Yii::$app->urlManager->rules as $urlRule) {
             if ($urlRule instanceof \yii\rest\UrlRule) {
                 $entity = [];
                 $urlName = key($urlRule->controller);
                 $controllerName = current($urlRule->controller);
 
                 try {
-                    list($controller, $actionID) = \Yii::$app->createController($controllerName);
+                    list($controller, $actionID) = Yii::$app->createController($controllerName);
                     $controllerReflection = new \ReflectionClass($controller);
 
                     $entity['title'] = $this->_findString($controllerReflection->getDocComment(), 'Rest Title');
@@ -88,7 +90,7 @@ class DefaultController extends \yii\base\Controller
 
             $rule['params'] = $params;
 
-            list($controller, $actionID) = \Yii::$app->createController($generatedRule->route);
+            list($controller, $actionID) = Yii::$app->createController($generatedRule->route);
 
             try {
                 $methodName = 'action' . BaseInflector::id2camel($actionID);
