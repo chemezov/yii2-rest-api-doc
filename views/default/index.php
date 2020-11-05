@@ -185,7 +185,7 @@ $methodColorMap = [
                                                     <h4>Status: <span class="element code"></span> (<span class="element text"></span>)</h4>
                                                     <h4>Headers:</h4>
                                                     <p class="element headers"></p>
-                                                    <h4>Body:</h4>
+                                                    <h4>Body: <button class="btn btn-sm btn-default tumbler hidden" type="button">Expand / Collapse all</button></h4>
                                                     <p class="element body"></p>
                                                 </div>
                                             </div>

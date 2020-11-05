@@ -47,6 +47,11 @@
             localStorage.setItem('rest_api_doc_' + $(this).attr('id'), $(this).val());
         });
 
+        $('.tumbler').on('click', function (e) {
+            e.preventDefault();
+            $(this).closest('.data').find('.body').JSONView('toggle');
+        });
+
         $('.docs-index form').submit(function (e) {
             e.preventDefault();
             var form = this;
@@ -82,6 +87,7 @@
             var response = $('.response', form).get(0);
             $('.loader', response).removeClass('hidden');
             $('.data', response).addClass('hidden');
+            $('.data .tumbler', response).addClass('hidden');
             $('.data .element', response).text('');
 
             var formData = {};
@@ -121,6 +127,7 @@
                 if (jqXHR.responseText) {
                     try {
                         $('.body', response).JSONView(prettify(jqXHR.responseText), {collapsed: jqXHR.status.toString().indexOf('20') === 0 ? true : false});
+                        $('.tumbler', response).removeClass('hidden');
                     } catch (e) {
                         $('.body', response).html(jqXHR.responseText);
                     }
