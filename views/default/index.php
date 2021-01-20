@@ -1,4 +1,5 @@
 <?php
+
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
@@ -35,7 +36,7 @@ $methodColorMap = [
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#<?= $entity['id'] ?>">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#<?= $entity['id'] . $ei ?>">
                             <?= $entity['name'] ?>
                             <?php if (isset($entity['title'])): ?>
                                 <span class="text-muted pull-right"><?= $entity['title']; ?></span>
@@ -43,7 +44,7 @@ $methodColorMap = [
                         </a>
                     </h4>
                 </div>
-                <div id="<?= $entity['id'] ?>" class="panel-collapse collapse" role="tabpanel">
+                <div id="<?= $entity['id'] . $ei ?>" class="panel-collapse collapse" role="tabpanel">
                     <?php if (isset($entity['description']) || isset($entity['model'])): ?>
                         <div class="panel-body">
                             <?php if (isset($entity['model'])): ?>
