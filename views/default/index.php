@@ -122,12 +122,17 @@ $methodColorMap = [
                                             <?php if (!empty($rule['filters'])) : ?>
                                                 <fieldset class="filters">
                                                     <legend>Query Filters</legend>
-                                                    <?php foreach ($rule['filters'] as $filter) : ?>
-                                                        <div class="form-group">
-                                                            <label><?= $filter['title'] ?></label>
-                                                            <input data-key="<?= $filter['key'] ?>" class="form-control" type="text" />
-                                                        </div>
-                                                    <?php endforeach; ?>
+
+                                                    <div class="row">
+                                                        <?php foreach ($rule['filters'] as $filter) : ?>
+                                                            <div class="col-xs-6 col-sm-4 col-md-3">
+                                                                <div class="form-group">
+                                                                    <label><?= $filter['title'] ?></label>
+                                                                    <input data-key="<?= $filter['key'] ?>" class="form-control" type="text"/>
+                                                                </div>
+                                                            </div>
+                                                        <?php endforeach; ?>
+                                                    </div>
                                                 </fieldset>
                                             <?php endif; ?>
                                             <?php if (!empty($rule['expand'])) : ?>
