@@ -158,7 +158,7 @@ class DefaultController extends \yii\base\Controller
         }
     }
 
-    function _findElements($string, $title, $pattern = '[^.]*\.')
+    function _findElements($string, $title, $pattern = '.*\.')
     {
         $elementsString = $this->_findString($string, $title, $pattern);
         $elements = [];
