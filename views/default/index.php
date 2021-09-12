@@ -103,7 +103,7 @@ $methodColorMap = [
                                 <div id="rule-<?= $ei ?>-<?= $ri ?>" class="panel panel-primary collapse" role="tabpanel">
                                     <div class="panel-body">
                                         <?php if (!empty($rule['description'])) : ?>
-                                            <p><?= $rule['description'] ?>.</p>
+                                            <?= \yii\helpers\Markdown::process($rule['description'] . '.'); ?>
                                         <?php endif ?>
                                         <form class="form">
                                             <input type="hidden" name="method" value="<?= $rule['method'] ?>" />
