@@ -9,7 +9,10 @@ Alternatively add into `require` section of your `composer.json` following strin
 ```
 'modules' => [
   ...
-  'documentation' => 'chemezov\yii2\rest_api_doc\Module',
+  'documentation' => [
+      'class' => 'chemezov\yii2\rest_api_doc\Module',
+      'allowedIPs' => ['127.0.0.1', '::1'],
+  ],
   ...
 ],
 ```

@@ -2,10 +2,16 @@
 
 namespace chemezov\yii2\rest_api_doc\controllers;
 
+use chemezov\yii2\rest_api_doc\Module;
 use Yii;
+use yii\filters\AccessControl;
 use yii\helpers\BaseInflector;
 use yii\helpers\Inflector;
+use yii\web\ForbiddenHttpException;
 
+/**
+ * @property Module $module
+ */
 class DefaultController extends \yii\base\Controller
 {
     public $layout = 'main';
@@ -15,6 +21,32 @@ class DefaultController extends \yii\base\Controller
         $view = $this->getView();
         \chemezov\yii2\rest_api_doc\ModuleAsset::register($view);
         parent::init();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function behaviors()
+    {
+        $behaviors = parent::behaviors();
+
+        $behaviors['access'] = [
+            'class' => AccessControl::class,
+            'denyCallback' => function ($rule, $action) {
+                throw new ForbiddenHttpException('You are not allowed to access this page.');
+            },
+            'rules' => [
+                [
+                    'allow' => true,
+                    'ips' => $this->module->allowedIPs, // список IP-адресов, для которых доступ разрешен
+                ],
+                [
+                    'allow' => false,
+                ],
+            ],
+        ];
+
+        return $behaviors;
     }
 
     public function actionIndex()

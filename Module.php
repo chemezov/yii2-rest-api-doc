@@ -6,6 +6,8 @@ class Module extends \yii\base\Module implements \yii\base\BootstrapInterface
 {
     public $controllerNamespace = 'chemezov\yii2\rest_api_doc\controllers';
 
+    public $allowedIPs = ['127.0.0.1', '::1'];
+
     public function bootstrap($app)
     {
         $app->getUrlManager()->addRules([
